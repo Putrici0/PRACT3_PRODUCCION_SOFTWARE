@@ -17,8 +17,13 @@ class Expense:
 
     def __post_init__(self):
         """
-        FIXME: Revisen si falta algo que comprobar...
+        Se comprueba:
+            Que tenga un titulo
+            Que el importe sea mayor a 0
+            Que la fecha del gasto no sea posterior al dia de hoy
         """
+        if not self.title or not self.title.strip():
+            raise ValueError("El título no puede estar vacío")
 
         if self.amount <= 0:
             raise InvalidAmountError("El importe debe ser mayor que 0")
